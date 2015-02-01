@@ -125,3 +125,13 @@ When the commit gets merged,
 GitHub will know to automatically close these issues.
 If you're working in a repository that is a fork or is expected to be a fork,
 expand the issue like `closes jonathanong/git-style-guide#56`.
+
+### Add emojis to your commit messages!
+
+For example: 
+
+> deps: :arrow_up: koa@~0.16.0
+
+Set a standard for your team. 
+Currently, I only do arrows for dependency changes.
+It makes git way more fun!
