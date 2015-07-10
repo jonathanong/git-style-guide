@@ -24,6 +24,9 @@ Type `git rebase master` (or whatever the master branch is) to get rid of this c
 If possible, don't click the big green "Merge Pull Request" button.
 Doing so creates a `Merge branch...` commit, which is noisy.
 
+However, if you do this, you should always reference issues that
+this commit solves in the commit title or description.
+
 ### Add the "committed by" message to each merge
 
 ![](iojs-by.png)
@@ -128,10 +131,66 @@ expand the issue like `closes jonathanong/git-style-guide#56`.
 
 ### Add emojis to your commit messages!
 
-For example: 
+For example:
 
 > deps: :arrow_up: koa@~0.16.0
 
-Set a standard for your team. 
+Set a standard for your team.
 Currently, I only do arrows for dependency changes.
 It makes git way more fun!
+
+## Creating Pull Requests
+
+### Describe your pull request
+
+Make sure the maintainer knows what's going on.
+
+- What were the requirements and how were they satisfied?
+- What is some potential technical debt?
+- What would you like others to specifically review?
+- Who would you like to review this PR? `/cc` them or assign them.
+- Is this PR ready to merge or in progress?
+- What issues does it close?
+
+### Open your pull request early
+
+Especially in teams where you want to know what others are working on.
+It also helps to have others look at your progress so they make sure you're not
+making any obvious mistakes and that you're on the right track.
+
+### Don't change versions
+
+Let the maintainer do the versioning.
+The primary reason is that this commit could be included with other commits,
+which may warrant a different version.
+Thus, adding a commit that has a version in it makes everything more confusing.
+
+### Rebase and Squash
+
+Always rebase your pull request so that it can be cleanly merged.
+
+Squash your commits appropriately - there should be as few as possible.
+There should not be any working commits, ex.
+commits where you add a log followed by another commit where they're removed.
+There should not be any "merge" commits
+
+## Merging Pull Requests
+
+### Don't be pedantic
+
+If the pull request needs some minor touch ups,
+don't always bother asking the collaborator to fix every tiny detail.
+Sometimes it's just easier to make those changes yourself, then squash the
+commits so that they still have the credit.
+
+For example, don't be so finicky with style changes
+(you should lint in your CI testing service anyways)
+or phrasing.
+Just make those changes yourself.
+
+### Don't be afraid to cherry-pick
+
+If a pull request includes commits you are not interested in,
+ex. version bump commits, then simply `cherry-pick` the commits
+you're interested in. The collaborator will still get credit
+and you don't have to bother asking the collaborator to "remove those commits".
